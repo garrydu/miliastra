@@ -1,0 +1,12 @@
+Flappy Bird 也就是像素鸟。分数达到1000就胜利。这个是第一个版本，也请大家留言建议增加什么样的内容。感谢！
+
+玩法和原版一样，按攻击键往上飞。
+
+
+Flappy Bird: You win by reaching a score of 1000. This is the first version, and please leave comments to suggest what content to add. Thank you!
+
+The gameplay is the same as the original: press the attack key to flap up.
+
+Flappy Bird﻿はスコアが1000に達すると勝利です。これは最初のバージョンで、追加してほしい内容のご意見をぜひコメントしてください。ありがとうございます！
+
+ゲームプレイはオリジナルと同じで、攻撃キーを押して羽ばたきます。
