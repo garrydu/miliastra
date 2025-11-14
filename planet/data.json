@@ -1,0 +1,33 @@
+{
+  "1@int": 1,
+  "2@int": 806,
+  "3@int": 3,
+  "4": {
+    "1": {
+      "1": {
+        "2@int": 5,
+        "4@int": 1073741858
+      },
+      "3@string": "datat",
+      "5@int": 9,
+      "13": {
+        "1": {
+          "1": {
+            "1": {
+              "1@int": 10000,
+              "2@int": 20000,
+              "3@int": 21001,
+              "5@int": 1073741858
+            },
+            "2@string": "datat",
+            "6": [
+              "EgFjGAgiJgiSThABIgcIAaIGAggI6gYVChMIAhABIgcIAaIGAggDsgYDCK4ROAZABg=="
+            ]
+          }
+        }
+      }
+    },
+    "3@string": "619722851-1763093049-1073741859-\\d1.gia"
+  },
+  "5@int": 1657
+}
