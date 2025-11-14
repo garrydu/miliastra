@@ -122,4 +122,4 @@ def get_pNe():
     return ps, es
 
 if __name__ == "__main__":
-    get_pNe()
+    print(get_pNe())
