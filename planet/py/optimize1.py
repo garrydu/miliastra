@@ -93,10 +93,10 @@ def find_edges(ps):
     res = []
     # ylmt=0.3026311666666667
     for i in range(0, len(ps) - 1):
-        theta = acos(1 - abs(ps[i][1]))
-        ylmt = max(abs(sin(0.3 + theta)), sin(theta)) * 0.3 + ps[i][1]
+        theta = acos(abs(ps[i][1]))
+        ylmt = -max(abs(sin(0.3 + theta)), sin(theta)) * 0.3 + ps[i][1]
         j = i + 1
-        while ps[j][1] < ylmt:
+        while ps[j][1] > ylmt:
             if np.dot(ps[i], ps[j]) > lmt:
                 res.append((i, j))
             j += 1
@@ -106,10 +106,9 @@ def find_edges(ps):
 
 
 def get_pNe():
+    start = time.perf_counter()
     ps = generate_hexagon_centers(diagonal_angle_degrees=15)
     ps = ps[2:-2]
-
-    start = time.perf_counter()
     es = find_edges([np.array(i) for i in ps])
     end = time.perf_counter()
     elapsed_us = (end - start) * 1_000_000
@@ -126,4 +125,5 @@ def get_pNe():
 
 
 if __name__ == "__main__":
-    get_pNe()
+    e,p =get_pNe()
+    print(len(e), len(p))

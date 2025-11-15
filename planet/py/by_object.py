@@ -1,5 +1,6 @@
 import numpy as np
 from math import acos, sin
+import time
 
 display_ps = []
 es = []
@@ -10,7 +11,7 @@ class block:
         y = y - 0.0071174377224199285
         theta += 3.8832220774509327
         self.is_end = False
-        if y <= -1:
+        if y <= -0.99:
             self.is_end = True
             return
         radius = np.sqrt(1 - y**2)
@@ -36,9 +37,26 @@ class block:
 
         return
 
+    # def find_edge(self):
+    #     lmt = 0.954555620192181
+    #     theta = acos(1 - abs(self.ctr[1]))
+    #     ylmt = -max(abs(sin(0.3 + theta)), sin(theta)) * 0.3 + self.ctr[1]
+    #     j = self.nxt
+    #     for i in range(50):
+    #         if j.is_end:
+    #             break
+    #         if j.ctr[1] < ylmt:
+    #             break
+    #         if np.dot(self.ctr, j.ctr) > lmt:
+    #             self.edges.append(j)
+    #             j.edges.append(self)
+    #             es.append((self.ctr, j.ctr))
+    #         j = j.nxt
+    #     self.nxt.trigger(1)
+    #     return
     def find_edge(self):
         lmt = 0.954555620192181
-        theta = acos(1 - abs(self.ctr[1]))
+        theta = acos(abs(self.ctr[1]))
         ylmt = -max(abs(sin(0.3 + theta)), sin(theta)) * 0.3 + self.ctr[1]
         j = self.nxt
         for i in range(50):
@@ -54,12 +72,16 @@ class block:
         self.nxt.trigger(1)
         return
 
-
 def test():
+    start = time.perf_counter()
     b = block(1, 0)
     b.trigger(1)
+    end = time.perf_counter()
+    elapsed_us = (end - start) * 1_000_000
+    print(f"Execution time: {elapsed_us:.2f} µs")
     return display_ps, es
 
 
 if __name__ == "__main__":
-    print(test())
+    p,e=test()
+    print(len(p),len(e))
