@@ -1,5 +1,5 @@
 import numpy as np
-from math import *
+from math import acos, sin
 import time
 
 
@@ -28,6 +28,9 @@ def generate_hexagon_centers(diagonal_angle_degrees=7.5):
     # Use Fibonacci sphere algorithm for uniform distribution
     centers = []
     phi = (1 + np.sqrt(5)) / 2  # Golden ratio
+
+    print("y step", 2 / (n_points - 1))
+    print("theta step", 2 * np.pi / phi)
 
     for i in range(n_points):
         # Fibonacci sphere algorithm
@@ -73,7 +76,7 @@ def find_neighbors(centers, max_distance_factor=1.5):
     # Find all neighbors
     edges = []
     for i in range(n):
-        for j in range(i+1, n):
+        for j in range(i + 1, n):
             cos_angle = np.clip(np.dot(centers[i], centers[j]), -1, 1)
             angle = np.arccos(cos_angle)
 
@@ -89,15 +92,15 @@ def find_edges(ps):
     lmt = 0.954555620192181
     res = []
     # ylmt=0.3026311666666667
-    for i in range(0, len(ps)-1):
-        theta = acos(1-abs(ps[i][1]))
-        ylmt = max(abs(sin(0.3+theta)), sin(theta))*0.3 + ps[i][1]
-        j = i+1
+    for i in range(0, len(ps) - 1):
+        theta = acos(1 - abs(ps[i][1]))
+        ylmt = max(abs(sin(0.3 + theta)), sin(theta)) * 0.3 + ps[i][1]
+        j = i + 1
         while ps[j][1] < ylmt:
             if np.dot(ps[i], ps[j]) > lmt:
                 res.append((i, j))
             j += 1
-            if j>=len(ps):
+            if j >= len(ps):
                 break
     return res
 
@@ -105,21 +108,22 @@ def find_edges(ps):
 def get_pNe():
     ps = generate_hexagon_centers(diagonal_angle_degrees=15)
     ps = ps[2:-2]
-    
+
     start = time.perf_counter()
     es = find_edges([np.array(i) for i in ps])
     end = time.perf_counter()
     elapsed_us = (end - start) * 1_000_000
     print(f"Execution time: {elapsed_us:.2f} µs")
-    
+
     # start = time.perf_counter()
     # find_neighbors(ps)
     # end = time.perf_counter()
     # elapsed_us = (end - start) * 1_000_000
     # print(f"Execution time: {elapsed_us:.2f} µs")
-    
+
     # print(len(es))
     return ps, es
 
+
 if __name__ == "__main__":
-    print(get_pNe())
+    get_pNe()

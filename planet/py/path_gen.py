@@ -1,13 +1,13 @@
 from optimize1 import get_pNe
-import numpy as np
+#  import numpy as np
 from random import randint
-from math import *
+#  from math import sin
 
 
 def gen_dirs(n):
-    l = list(range(1, n+1))
-    for i in range(n-1, 1, -1):
-        j = randint(0, i-1)
+    l = list(range(1, n + 1))
+    for i in range(n - 1, 1, -1):
+        j = randint(0, i - 1)
         l[i], l[j] = l[j], l[i]
     return int(''.join([str(i) for i in l]))
 
@@ -15,8 +15,8 @@ def gen_dirs(n):
 def gen():
     ps, es = get_pNe()
     N = len(ps)
-    vis = [0]*N
-    neigb_vis = [0]*N
+    vis = [0] * N
+    neigb_vis = [0] * N
     e = []
     for i in range(N):
         e.append([])
@@ -36,8 +36,8 @@ def gen():
         if neigb_vis[point] > 2:
             continue
         while dirs > 0:
-            nxt = e[point][dirs % 10-1]
-            dirs = dirs//10
+            nxt = e[point][dirs % 10 - 1]
+            dirs = dirs // 10
             # print(nxt)
             if vis[nxt]:
                 continue
@@ -58,9 +58,9 @@ def gen():
     return vis
 
 
-
 if __name__ == "__main__":
     # print(gen())
     # print(sum(gen()))
     # print(gen_dirs(7))
-    print(blk_points())
+    #  print(blk_points())
+    pass
