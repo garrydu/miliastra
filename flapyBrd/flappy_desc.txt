@@ -1,0 +1,11 @@
+和原始像素鸟FLAPPY BIRD类似，不过是史莱姆。
+
+Same gameplay as the original Flappy Bird, but with a slime!
+
+オリジナルのFlappy Birdと同じゲームプレイですが、操作するのはスライムです！
+
+使用攻击键向上飞。避免撞到障碍物。拿满1000分。
+
+Press attack key to flap, avoid hitting anything and get 1000 score to win!
+
+攻撃キーを押して飛ぶ, 何にも当たらないようにしてスコア1000を獲得すると勝利です！	
